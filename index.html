@@ -10,6 +10,12 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <!-- Chart.js for sleek charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Auth Check -->
+  <script>
+    if (!localStorage.getItem('auth_token')) {
+      window.location.href = 'login.html';
+    }
+  </script>
 </head>
 
 <body>
@@ -171,7 +177,7 @@
               <span
                 style="position:absolute;top:10px;right:12px;width:6px;height:6px;background:var(--color-negative);border-radius:50%;"></span>
             </button>
-            <button class="icon-btn"><i class="ph ph-plus"></i></button>
+            <button class="icon-btn" id="btnLogout" title="Выйти"><i class="ph ph-sign-out"></i></button>
           </div>
 
           <div class="user-profile">
@@ -180,7 +186,7 @@
               alt="User Avatar" class="user-avatar">
             <div class="user-info">
               <span class="user-name">Young Alaska</span>
-              <span class="user-role">Business</span>
+              <span class="user-role">Admin</span>
             </div>
             <i class="ph ph-caret-down" style="color:var(--color-text-muted)"></i>
           </div>
