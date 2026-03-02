@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Transport SaaS</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Phosphor Icons for high quality line icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Chart.js for sleek charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-section">
+        <div class="logo-icon">X</div>
+        <div class="logo-text">Nexus Transport</div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-header">Меню</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" style="--nav-color: var(--color-primary)">
+              <i class="ph ph-layout"></i>
+              Общий дашборд
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="--nav-color: #3B82F6">
+              <i class="ph ph-truck"></i>
+              Автоперевозки
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="--nav-color: #8B5CF6">
+              <i class="ph ph-train"></i>
+              ЖД Логистика
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="--nav-color: #06B6D4">
+              <i class="ph ph-airplane-tilt"></i>
+              Авиадоставка
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="--nav-color: #F59E0B">
+              <i class="ph ph-package"></i>
+              Складской учет
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-header">Tools</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="ph ph-receipt"></i>
+              Invoice
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="ph ph-chart-line-up"></i>
+              Analytics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="ph ph-lightning"></i>
+              Automation
+              <span class="tag-beta">BETA</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="team-switcher">
+          <div class="team-avatar">M</div>
+          <div class="team-info">
+            <div class="team-name">Team Marketing</div>
+          </div>
+          <i class="ph ph-caret-down"></i>
+        </div>
+
+        <div class="upgrade-card">
+          <h4>Upgrade Plan</h4>
+          <p>Get more features with pro</p>
+          <button class="btn-upgrade">Upgrade Now</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main ContentWrapper -->
+    <div class="main-wrapper">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <h1 class="page-title">Общий дашборд</h1>
+
+        <div class="topbar-right">
+          <div class="search-container">
+            <i class="ph ph-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search...">
+            <span class="search-shortcut">⌘F</span>
+          </div>
+
+          <div class="icon-actions">
+            <button class="icon-btn" id="themeToggle" title="Переключить тему"><i class="ph ph-moon"></i></button>
+            <button class="icon-btn"><i class="ph ph-gift"></i></button>
+            <button class="icon-btn" style="position:relative;">
+              <i class="ph ph-bell"></i>
+              <span
+                style="position:absolute;top:10px;right:12px;width:6px;height:6px;background:var(--color-negative);border-radius:50%;"></span>
+            </button>
+            <button class="icon-btn"><i class="ph ph-plus"></i></button>
+          </div>
+
+          <div class="user-profile">
+            <!-- Using a high-quality unspash placeholder for wow effect -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+              alt="User Avatar" class="user-avatar">
+            <div class="user-info">
+              <span class="user-name">Young Alaska</span>
+              <span class="user-role">Business</span>
+            </div>
+            <i class="ph ph-caret-down" style="color:var(--color-text-muted)"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Scrollable Content -->
+      <main class="main-content">
+
+        <!-- Metrics Row -->
+        <div class="metrics-grid">
+          <!-- Card 1 -->
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Page Views</span>
+              <div class="metric-icon"><i class="ph ph-eye"></i></div>
+            </div>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">12,450</span>
+              <span class="metric-trend trend-positive">
+                <i class="ph ph-trend-up"></i> 15.8%
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Total Revenue</span>
+              <div class="metric-icon"><i class="ph ph-currency-dollar"></i></div>
+            </div>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">$363.95</span>
+              <span class="metric-trend trend-negative">
+                <i class="ph ph-trend-down"></i> 34.0%
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Bounce Rate</span>
+              <div class="metric-icon"><i class="ph ph-activity"></i></div>
+            </div>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">86.5%</span>
+              <span class="metric-trend trend-positive">
+                <i class="ph ph-trend-up"></i> 24.2%
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-grid">
+          <!-- Flow Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Sales Overview</div>
+              <div class="card-actions">
+                <select>
+                  <option>Monthly</option>
+                  <option>Weekly</option>
+                  <option>Yearly</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="salesFlowChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Bar Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Total Subscriber</div>
+              <div class="card-actions">
+                <i class="ph ph-dots-three-outline-vertical" style="color:var(--color-text-muted); cursor:pointer;"></i>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="subscriberBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="bottom-grid">
+          <!-- Distribution -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Sales Distribution</div>
+              <div class="card-actions">
+                <select>
+                  <option>Monthly</option>
+                </select>
+              </div>
+            </div>
+            <div class="doughnut-wrapper">
+              <div class="doughnut-half"></div>
+            </div>
+            <div class="dist-legend">
+              <div class="legend-item">
+                <div class="legend-label">
+                  <div class="dot dot-primary"></div> Website
+                </div>
+                <div class="legend-value">$374.82</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-label">
+                  <div class="dot dot-positive"></div> Mobile App
+                </div>
+                <div class="legend-value">$241.60</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-label">
+                  <div class="dot dot-other"></div> Other
+                </div>
+                <div class="legend-value">$213.42</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Integrations -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">List of Integration</div>
+              <div class="card-actions">
+                <a href="#">See All</a>
+              </div>
+            </div>
+            <table class="integration-table">
+              <thead>
+                <tr>
+                  <th class="checkbox-cell"><input type="checkbox" class="custom-checkbox"></th>
+                  <th>APPLICATION</th>
+                  <th>TYPE</th>
+                  <th>RATE</th>
+                  <th style="text-align: right;">PROFIT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="custom-checkbox"></td>
+                  <td>
+                    <div class="app-cell">
+                      <div class="app-icon" style="color:#635BFF;"><i class="ph-fill ph-stripe-logo"></i></div>
+                      <span class="app-name">Stripe</span>
+                    </div>
+                  </td>
+                  <td class="type-cell">Finance</td>
+                  <td class="rate-cell">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 76%; background: var(--color-primary);"></div>
+                    </div>
+                  </td>
+                  <td class="profit-cell">$1,245.00</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="custom-checkbox"></td>
+                  <td>
+                    <div class="app-cell">
+                      <div class="app-icon" style="color:#FF4A00;"><i class="ph-fill ph-orange-slice"></i></div>
+                      <!-- Pseudo Zapata icon -->
+                      <span class="app-name">Zapier</span>
+                    </div>
+                  </td>
+                  <td class="type-cell">CRM</td>
+                  <td class="rate-cell">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 45%; background: var(--color-positive);"></div>
+                    </div>
+                  </td>
+                  <td class="profit-cell">$843.00</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="custom-checkbox"></td>
+                  <td>
+                    <div class="app-cell">
+                      <div class="app-icon" style="color:#95BF47;"><i class="ph-fill ph-shopping-bag"></i></div>
+                      <span class="app-name">Shopify</span>
+                    </div>
+                  </td>
+                  <td class="type-cell">Marketplace</td>
+                  <td class="rate-cell">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 90%; background: var(--color-negative);"></div>
+                    </div>
+                  </td>
+                  <td class="profit-cell">$2,340.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- AI Assistant Widget -->
+  <div class="ai-assistant-widget">
+    <button class="ai-assistant-btn" id="aiAssistantBtn" title="AI Помощник">
+      <i class="ph-fill ph-robot"></i>
+    </button>
+    <div class="ai-assistant-tooltip">Нужна помощь?</div>
+
+    <!-- AI Chat Box -->
+    <div class="ai-chat-box" id="aiChatBox">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <i class="ph-fill ph-robot"></i> AI Помощник
+        </div>
+        <button class="icon-btn ai-chat-close" id="aiChatClose" style="width:28px;height:28px;font-size:14px;"><i
+            class="ph ph-x"></i></button>
+      </div>
+      <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-message ai-received">
+          Привет! Я твой AI-помощник Nexus. Чем могу помочь?
+        </div>
+      </div>
+      <div class="ai-chat-input-area">
+        <input type="text" class="search-input ai-input" id="aiChatInput" placeholder="Введите сообщение...">
+        <button class="ai-send-btn" id="aiSendBtn"><i class="ph-fill ph-paper-plane-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
