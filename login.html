@@ -144,30 +144,33 @@
             margin-top: 16px;
             font-weight: 500;
             display: none;
-            animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        .shake-animation {
+            animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
         }
 
         @keyframes shake {
 
             10%,
             90% {
-                transform: translate3d(-1px, 0, 0);
+                transform: translate3d(-2px, 0, 0);
             }
 
             20%,
             80% {
-                transform: translate3d(2px, 0, 0);
+                transform: translate3d(4px, 0, 0);
             }
 
             30%,
             50%,
             70% {
-                transform: translate3d(-4px, 0, 0);
+                transform: translate3d(-8px, 0, 0);
             }
 
             40%,
             60% {
-                transform: translate3d(4px, 0, 0);
+                transform: translate3d(8px, 0, 0);
             }
         }
 
@@ -211,10 +214,11 @@
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             const errorMsg = document.getElementById('errorMsg');
+            const container = document.querySelector('.login-container');
 
             // Reset animation
-            errorMsg.style.animation = 'none';
-            errorMsg.offsetHeight; /* trigger reflow */
+            container.classList.remove('shake-animation');
+            void container.offsetWidth; /* trigger reflow */
 
             try {
                 const response = await fetch('/api/login', {
@@ -236,12 +240,12 @@
                 } else {
                     errorMsg.style.display = 'block';
                     errorMsg.textContent = data.error || 'Ошибка входа';
-                    errorMsg.style.animation = 'shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both';
+                    container.classList.add('shake-animation');
                 }
             } catch (err) {
                 errorMsg.style.display = 'block';
                 errorMsg.textContent = 'Ошибка соединения с сервером';
-                errorMsg.style.animation = 'shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both';
+                container.classList.add('shake-animation');
             }
         });
     </script>
