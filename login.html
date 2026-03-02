@@ -60,14 +60,52 @@
             margin-bottom: 24px;
         }
 
-        .apple-avatar {
+        .avatar-wrapper {
+            position: relative;
             width: 80px;
             height: 80px;
+            margin: 0 auto 16px;
+        }
+
+        .apple-avatar {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 16px;
             border: 2px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .success-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #34c759;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            opacity: 0;
+            transform: scale(0.5) rotate(-20deg);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4);
+            box-sizing: border-box;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .login-container.success .success-overlay {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .login-container.success .apple-avatar {
+            transform: scale(0.8);
+            opacity: 0;
         }
 
         h2 {
@@ -187,8 +225,13 @@
 
     <div class="login-container">
         <div class="logo-container">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
-                alt="Avatar" class="apple-avatar">
+            <div class="avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                    alt="Avatar" class="apple-avatar">
+                <div class="success-overlay">
+                    <i class="ph-fill ph-thumbs-up"></i>
+                </div>
+            </div>
             <h2>Trans Line Pro</h2>
             <p>Nano Banano Edition</p>
         </div>
@@ -231,12 +274,17 @@
 
                 if (response.ok && data.token) {
                     localStorage.setItem('auth_token', data.token);
-                    // Beautiful fade out effect before redirect
-                    document.body.style.transition = 'opacity 0.5s ease';
-                    document.body.style.opacity = '0';
+                    // Show success thumbs up animation
+                    container.classList.add('success');
+
+                    // Delay fade out effect to let user see the thumbs up
                     setTimeout(() => {
-                        window.location.href = '/';
-                    }, 500);
+                        document.body.style.transition = 'opacity 0.5s ease';
+                        document.body.style.opacity = '0';
+                        setTimeout(() => {
+                            window.location.href = '/';
+                        }, 500);
+                    }, 800);
                 } else {
                     errorMsg.style.display = 'block';
                     errorMsg.textContent = data.error || 'Ошибка входа';
