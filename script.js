@@ -231,14 +231,33 @@ document.addEventListener("DOMContentLoaded", () => {
       aiChatInput.value = '';
       aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
 
-      // Simulate AI typing delay
-      setTimeout(() => {
-        const aiResponse = document.createElement('div');
-        aiResponse.classList.add('ai-message', 'ai-received');
-        aiResponse.textContent = "Понял! Обрабатываю ваш запрос...";
-        aiChatMessages.appendChild(aiResponse);
-        aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
-      }, 1000);
+      // Add loading state
+      const aiResponse = document.createElement('div');
+      aiResponse.classList.add('ai-message', 'ai-received');
+      aiResponse.innerHTML = '<span class="typing-indicator">...</span>';
+      aiChatMessages.appendChild(aiResponse);
+      aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+
+      // Call secure Vercel API backend
+      fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            aiResponse.textContent = "Ошибка: " + data.error;
+          } else {
+            aiResponse.textContent = data.reply;
+          }
+          aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        })
+        .catch(err => {
+          console.error(err);
+          aiResponse.textContent = "Ошибка: нет связи с сервером.";
+          aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        });
     };
 
     aiSendBtn.addEventListener('click', sendMessage);
